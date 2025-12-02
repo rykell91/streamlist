@@ -1,0 +1,230 @@
+.page-card {
+  width: 100%;
+  max-width: 720px;
+  background: rgba(15, 23, 42, 0.96);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Header area */
+
+.streamlist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  gap: 1rem;
+}
+
+.header-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.header-icon {
+  font-size: 2rem;
+  color: #8affc1; /* neon green icon */
+}
+
+.page-title {
+  margin: 0 0 0.1rem;
+  font-size: 1.3rem;
+  color: #8affc1; /* main title color */
+}
+
+.page-description {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #c7ffe0; /* subtitle / helper text */
+}
+
+/* Clear all button */
+
+.clear-all-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  border-radius: 999px;
+  border: 1px solid rgba(248, 113, 113, 0.7);
+  background: rgba(127, 29, 29, 0.4);
+  color: #fecaca;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.clear-all-button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.clear-all-label {
+  line-height: 1;
+}
+
+/* Form */
+
+.streamlist-form {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.streamlist-input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.95rem;
+}
+
+.streamlist-input::placeholder {
+  color: #6b7280;
+}
+
+.streamlist-button {
+  border: none;
+  border-radius: 0.75rem;
+  padding: 0 1.2rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, #22c55e, #06b6d4);
+  color: #020617;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.streamlist-button .material-symbols-outlined {
+  font-size: 1.3rem;
+}
+
+.streamlist-button:hover {
+  filter: brightness(1.05);
+}
+
+/* Stats row under the form */
+
+.stats-row {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.8rem;
+  color: #e6ffe0; /* pale mint for totals */
+  margin-bottom: 0.75rem;
+}
+
+/* List items */
+
+.streamlist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.streamlist-item-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.75rem;
+  border-radius: 0.75rem;
+  background: rgba(15, 23, 42, 0.95);
+  border: 1px solid rgba(55, 65, 81, 0.9);
+}
+
+/* Movie title text */
+
+.streamlist-item-title {
+  font-size: 0.95rem;
+  color: #e5e7eb; /* visible on dark background */
+}
+
+.streamlist-item-title.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.item-actions {
+  display: flex;
+  gap: 0.25rem;
+}
+
+/* Icon buttons */
+
+.icon-button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  border-radius: 999px;
+}
+
+.icon-button .material-symbols-outlined {
+  font-size: 1.1rem;
+}
+
+.complete-toggle-button .material-symbols-outlined {
+  color: #8affc1; /* match neon theme */
+}
+
+.edit-button .material-symbols-outlined {
+  color: #eab308;
+}
+
+.remove-button .material-symbols-outlined {
+  color: #f97373;
+}
+
+.icon-button:hover {
+  background: rgba(15, 23, 42, 0.9);
+}
+
+/* Empty state */
+
+.streamlist-empty {
+  text-align: center;
+  padding: 1rem 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px dashed rgba(148, 163, 184, 0.7);
+  color: #b0ffdd; /* softer mint text */
+  font-size: 0.9rem;
+}
+
+/* Edit mode */
+
+.edit-form {
+  grid-column: 1 / 4;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.edit-input {
+  flex: 1;
+  padding: 0.5rem 0.6rem;
+  border-radius: 0.6rem;
+  border: 1px solid rgba(148, 163, 184, 0.7);
+  background: #020617;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.save-button .material-symbols-outlined {
+  color: #8affc1;
+}
+
+.cancel-button .material-symbols-outlined {
+  color: #f97373;
+}
