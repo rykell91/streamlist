@@ -19,12 +19,9 @@ function App() {
           <Route path="/about" element={<AboutPage />} />
         </Routes>
       </main>
-
-      <footer className="app-footer">
-        <span>EZTechMovie, StreamList, Week 1 Program Design</span>
-      </footer>
     </div>
   )
 }
 
 export default App
+

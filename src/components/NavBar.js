@@ -7,8 +7,8 @@ function NavBar() {
       <div className="navbar-left">
         <div className="navbar-logo-circle">EZ</div>
         <div className="navbar-title-group">
-          <h1 className="navbar-title">StreamList</h1>
-          <p className="navbar-subtitle">
+          <h1 className="navbar-title neon-title">StreamList</h1>
+          <p className="navbar-subtitle neon-subtitle">
             Cloud based streaming lists for EZTechMovie
           </p>
         </div>

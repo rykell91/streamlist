@@ -21,7 +21,7 @@
   background: linear-gradient(135deg, #22c55e, #06b6d4);
   display: flex;
   align-items: center;
-  justify-content: center;  /* FIXED LINE */
+  justify-content: center;
   font-weight: 700;
   font-size: 1rem;
   color: #020617;
@@ -66,4 +66,33 @@
   background: linear-gradient(135deg, #22c55e, #06b6d4);
   color: #020617;
   border-color: transparent;
+}
+
+/* ----------------------------------------
+   NEON THEME (StreamList branding)
+   ---------------------------------------- */
+
+/* Main title "StreamList" */
+.neon-title {
+  color: #8affc1; /* neon green */
+  font-weight: 700;
+  text-shadow: 
+    0 0 6px rgba(138, 255, 193, 0.7),
+    0 0 12px rgba(138, 255, 193, 0.4);
+}
+
+/* Subtitle */
+.neon-subtitle {
+  color: #c7ffe0; /* soft mint */
+  text-shadow:
+    0 0 4px rgba(138, 255, 193, 0.4);
+}
+
+/* EZ circle now matches the neon theme */
+.navbar-logo-circle {
+  background: #8affc1 !important;
+  color: #0f172a !important;
+  box-shadow:
+    0 0 10px rgba(138, 255, 193, 0.5),
+    0 0 18px rgba(138, 255, 193, 0.25);
 }
