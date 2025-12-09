@@ -1,51 +1,32 @@
 import { useState, useEffect } from "react"
 import "./StreamListPage.css"
 
-const STORAGE_KEY = "streamlist-items"
-
 function StreamListPage() {
+  // load from localStorage if available
+  const [items, setItems] = useState(() => {
+    try {
+      const stored = localStorage.getItem("streamlist-items")
+      return stored ? JSON.parse(stored) : []
+    } catch {
+      return []
+    }
+  })
+
   const [newItem, setNewItem] = useState("")
-  const [items, setItems] = useState([])
   const [editingId, setEditingId] = useState(null)
   const [editingText, setEditingText] = useState("")
 
-  // Load items from localStorage once when the component mounts
+  // save to localStorage whenever items change
   useEffect(() => {
-    try {
-      const savedItems = localStorage.getItem(STORAGE_KEY)
-      if (savedItems) {
-        const parsed = JSON.parse(savedItems)
-        if (Array.isArray(parsed)) {
-          setItems(parsed)
-        }
-      }
-    } catch (error) {
-      console.error("Error reading StreamList items from localStorage:", error)
-    }
-  }, [])
-
-  // helper to update state + localStorage together
-  const updateItems = (updater) => {
-    setItems((previousItems) => {
-      const updated =
-        typeof updater === "function" ? updater(previousItems) : updater
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(updated))
-      } catch (error) {
-        console.error("Error saving StreamList items to localStorage:", error)
-      }
-      return updated
-    })
-  }
+    localStorage.setItem("streamlist-items", JSON.stringify(items))
+  }, [items])
 
   const handleSubmit = (event) => {
     event.preventDefault()
     const trimmed = newItem.trim()
     if (!trimmed) return
 
-    console.log("New StreamList item:", trimmed)
-
-    updateItems((previousItems) => [
+    setItems((previousItems) => [
       ...previousItems,
       {
         id: Date.now(),
@@ -58,10 +39,7 @@ function StreamListPage() {
   }
 
   const handleRemove = (id) => {
-    const removedItem = items.find((item) => item.id === id)
-    console.log("Removed item:", removedItem?.title)
-
-    updateItems((previousItems) => previousItems.filter((item) => item.id !== id))
+    setItems((previousItems) => previousItems.filter((item) => item.id !== id))
 
     if (editingId === id) {
       setEditingId(null)
@@ -70,19 +48,11 @@ function StreamListPage() {
   }
 
   const handleToggleComplete = (id) => {
-    updateItems((previousItems) =>
+    setItems((previousItems) =>
       previousItems.map((item) =>
         item.id === id ? { ...item, completed: !item.completed } : item
       )
     )
-
-    const updatedItem = items.find((item) => item.id === id)
-    if (updatedItem) {
-      console.log(
-        updatedItem.completed ? "Marked incomplete:" : "Marked complete:",
-        updatedItem.title
-      )
-    }
   }
 
   const handleStartEdit = (id) => {
@@ -102,13 +72,11 @@ function StreamListPage() {
     const trimmed = editingText.trim()
     if (!trimmed) return
 
-    updateItems((previousItems) =>
+    setItems((previousItems) =>
       previousItems.map((item) =>
         item.id === editingId ? { ...item, title: trimmed } : item
       )
     )
-
-    console.log("Edited item:", trimmed)
 
     setEditingId(null)
     setEditingText("")
@@ -116,10 +84,7 @@ function StreamListPage() {
 
   const handleClearAll = () => {
     if (items.length === 0) return
-    console.log("Cleared all items")
-
-    updateItems([])
-
+    setItems([])
     setEditingId(null)
     setEditingText("")
   }
@@ -246,16 +211,8 @@ function StreamListPage() {
           </li>
         )}
       </ul>
-
-      <p className="page-note">
-        Your StreamList items are saved in your browser using localStorage, so
-        they stay available even after you refresh the page or navigate between
-        routes.
-      </p>
     </section>
   )
 }
 
 export default StreamListPage
-
-
